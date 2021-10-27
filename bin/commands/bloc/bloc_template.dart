@@ -77,6 +77,8 @@ class SubEvent extends @NameEvent {
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'bloc.dart';
+
 class @NameBloc extends Bloc<@NameEvent, @NameState> {
 
   @NameBloc() : super(@NameState.empty()) {

@@ -9,3 +9,7 @@
 ## 1.0.2
 
 - Minor bug fixes.
+
+## 1.0.3
+
+- Import error resolved from some templates.

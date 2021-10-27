@@ -4,7 +4,7 @@ import 'package:args/command_runner.dart';
 import 'commands/bloc/bloc_command.dart';
 import 'commands/model/model_command.dart';
 import 'commands/page/page_command.dart';
-import 'commands/repo/repo_command.dart';
+import 'commands/repository/repository_command.dart';
 import 'commands/widget/widget_command.dart';
 
 void main(List<String> arguments) {

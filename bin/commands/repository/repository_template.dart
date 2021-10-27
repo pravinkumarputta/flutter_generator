@@ -9,6 +9,8 @@ abstract class @NameRepository {
   ''';
 
   final _repoImplTemplate = '''
+import 'repository.dart';
+
 class @NameRepositoryImpl extends @NameRepository {
 
   @NameRepositoryImpl();
