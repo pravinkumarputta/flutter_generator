@@ -65,5 +65,6 @@ Usage: flutter_generator widget [arguments]
     --with-dir            It creates flutter widget with directory.
 ```
 
-Created from templates made available by Stagehand under a BSD-style
+# License
+
 [license](https://github.com/dart-lang/stagehand/blob/master/LICENSE).
