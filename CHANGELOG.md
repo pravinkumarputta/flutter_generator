@@ -5,3 +5,7 @@
 ## 1.0.1
 
 - It will create an executable after pub activate.
+
+## 1.0.2
+
+- Minor bug fixes.
