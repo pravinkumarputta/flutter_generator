@@ -1,5 +1,6 @@
 import 'package:args/command_runner.dart';
 
+import '../../utils/common_utils.dart';
 import 'model_template.dart';
 
 class ModelCommand extends Command {
@@ -52,6 +53,8 @@ class ModelCommand extends Command {
   }
 
   void _createModelWithoutDir(String name) {
-    ModelTemplate().create(name);
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    ModelTemplate().create(namePath.name, path: namePath.path);
   }
 }

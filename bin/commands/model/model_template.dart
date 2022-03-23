@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../../utils/common_utils.dart';
 import '../../utils/extensions.dart';
 
 class ModelTemplate {
@@ -9,29 +10,38 @@ class @Name extends Equatable {
   final int field1;
   final String field2;
 
-  @Name({this.field1, this.field2});
+  const @Name({
+    required this.field1,
+    required this.field2,
+  });
 
   Map<String, dynamic> toJson() {
     return {
-      'field1': this.field1,
-      'field2': this.field2,
+      'field1': field1,
+      'field2': field2,
     };
   }
 
   static fromJson(Map<String, dynamic> json) {
-    return @Name(
+    return const @Name(
       field1: json['field1'],
       field2: json['field2'],
     );
   }
 
   @override
-  List<Object> get props => [field1, field2];
+  List<Object?> get props => [
+    field1,
+    field2,
+  ];
 
   @override
   String toString() {
     return \'''
-    @Name({field1: \$field1, field2: \$field2})
+    @Name({
+      field1: \$field1,
+      field2: \$field2,
+    })
     \''';
   }
 }
@@ -59,8 +69,12 @@ export '@name.dart';
   }
 
   void createDir(String name, {String dirName = 'models'}) {
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    name = namePath.name;
+    
     // set current dir path
-    var path = Directory.current.path;
+    var path = namePath.path;
 
     // create root dir
     var modelDirPath = path + '/' + dirName;

@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../../utils/common_utils.dart';
 import '../../utils/extensions.dart';
 
 class RepositoryTemplate {
@@ -28,15 +29,19 @@ export '@name_repository_impl.dart';
   ''';
 
   void create(String name, {String path}) {
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    name = namePath.name;
+    
     // set current dir path
-    path ??= Directory.current.path;
+    path ??= namePath.path;
 
     // create root dir
     var repoDirPath = path + '/' + 'repository';
     Directory(repoDirPath).createSync(recursive: true);
 
     // repo name
-    var repoName = name.capitalize();
+    var repoName = name.split('_').map((e) => e.capitalize()).toList().join('');
 
     // repo file path
     var repoFilePath = repoDirPath + '/' + name + '_repository.dart';

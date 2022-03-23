@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../../utils/common_utils.dart';
 import '../../utils/extensions.dart';
 
 class PageTemplate {
@@ -6,6 +7,8 @@ class PageTemplate {
 import 'package:flutter/material.dart';
 
 class @Name extends StatefulWidget {
+  const @Name({Key? key}) : super(key: key);
+
   static route() => '@Name';
 
   @override
@@ -19,8 +22,8 @@ class _@NameState extends State<@Name> {
       appBar: AppBar(
         title: Text("@Name")
       ),
-      body: Container(
-        child: Text("Hello"),
+      body: const Center(
+        child: Text("Welcome to @Name"),
       ),
     );
   }
@@ -52,8 +55,12 @@ export '@name.dart';
   }
 
   void createDir(String name, {String suffix = 'page'}) {
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    name = namePath.name;
+    
     // set current dir path
-    var path = Directory.current.path;
+    var path = namePath.path;
 
     // create root dir
     var pageDirPath = path + '/' + name + '_' + suffix;

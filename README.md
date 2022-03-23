@@ -9,7 +9,7 @@ dart pub global activate flutter_generator
 
 ## Commands
 ```
-Usage: flutter_generator <command> [arguments]
+Usage: fg <command> [arguments]
 
 Global options:
 -h, --help    Print this usage information.
@@ -26,14 +26,14 @@ Available commands:
 ```
 Usage: flutter_generator bloc [arguments]
 -h, --help                Print this usage information.
-    --name (mandatory)    Create bloc with given name.
+    --name (mandatory)    Create bloc with given name or full path.
 ```
 
 ### Model Command
 ```
 Usage: flutter_generator model [arguments]
 -h, --help                Print this usage information.
-    --name (mandatory)    Create model with given name.
+    --name (mandatory)    Create model with given name or full path.
     --dir-name            Create model folder with given name.
                           (defaults to "models")
     --with-dir            It creates flutter model with directory.
@@ -43,7 +43,7 @@ Usage: flutter_generator model [arguments]
 ```
 Usage: flutter_generator page [arguments]
 -h, --help                Print this usage information.
-    --name (mandatory)    Create page with given name.
+    --name (mandatory)    Create page with given name or full path.
     --suffix              Appends the given suffix at the end of file.
                           (defaults to "page")
     --with-dir            It creates flutter page with directory.
@@ -53,14 +53,14 @@ Usage: flutter_generator page [arguments]
 ```
 Usage: flutter_generator repository [arguments]
 -h, --help                Print this usage information.
-    --name (mandatory)    Create repository with given name.
+    --name (mandatory)    Create repository with given name or full path.
 ```
 
 ### Widget Command
 ```
 Usage: flutter_generator widget [arguments]
 -h, --help                Print this usage information.
-    --name (mandatory)    Create widget with given name.
+    --name (mandatory)    Create widget with given name or full path.
     --stateful            Create stateful widget.
     --with-dir            It creates flutter widget with directory.
 ```

@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../../utils/common_utils.dart';
 import '../../utils/extensions.dart';
 
 class BlocTemplate {
@@ -10,13 +11,13 @@ class @NameState extends Equatable {
   final bool field1;
   final String field2;
 
-  @NameState({
-    this.field1,
-    this.field2,
+  const @NameState({
+    required this.field1,
+    required this.field2,
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         field1,
         field2,
       ];
@@ -42,7 +43,7 @@ class @NameState extends Equatable {
   }
 
   factory @NameState.empty() {
-    return @NameState(
+    return const @NameState(
       field1: true,
       field2: '',
     );
@@ -62,12 +63,18 @@ class SubEvent extends @NameEvent {
   final bool field1;
   final String field2;
 
-  SubEvent(this.field1, this.field2);
+  const SubEvent({
+    required this.field1,
+    required this.field2,
+  });
 
   @override
   String toString() {
     return \'''
-    SubEvent(field1: \$field1, field2: \$field2)
+    SubEvent(
+      field1: \$field1,
+      field2: \$field2,
+    )
     \''';
   }
 }
@@ -100,15 +107,19 @@ export '@name_state.dart';
   ''';
 
   void create(String name, {String path}) {
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    name = namePath.name;
+    
     // set current dir path
-    path ??= Directory.current.path;
+    path ??= namePath.path;
 
     // create root dir
     var blocDirPath = path + '/' + 'bloc';
     Directory(blocDirPath).createSync(recursive: true);
 
     // bloc name
-    var blocName = name.capitalize();
+    var blocName = name.split('_').map((e) => e.capitalize()).toList().join('');
 
     // bloc state file path
     var blocStateFilePath = blocDirPath + '/' + name + '_state.dart';

@@ -1,5 +1,6 @@
 import 'package:args/command_runner.dart';
 
+import '../../utils/common_utils.dart';
 import 'widget_template.dart';
 
 class WidgetCommand extends Command {
@@ -52,6 +53,8 @@ class WidgetCommand extends Command {
   }
 
   void _createWidgetWithoutDir(String name, bool stateful) {
-    WidgetTemplate().create(name, stateful: stateful);
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    WidgetTemplate().create(namePath.name, stateful: stateful, path: namePath.path);
   }
 }

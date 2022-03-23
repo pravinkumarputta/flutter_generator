@@ -1,5 +1,6 @@
 import 'package:args/command_runner.dart';
 
+import '../../utils/common_utils.dart';
 import 'page_template.dart';
 
 class PageCommand extends Command {
@@ -53,6 +54,8 @@ class PageCommand extends Command {
   }
 
   void _createPageWithoutDir(String name, String suffix) {
-    PageTemplate().create(name, suffix: suffix);
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    PageTemplate().create(namePath.name, suffix: suffix, path: namePath.path);
   }
 }

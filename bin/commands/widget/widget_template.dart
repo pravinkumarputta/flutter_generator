@@ -1,4 +1,5 @@
 import 'dart:io';
+import '../../utils/common_utils.dart';
 import '../../utils/extensions.dart';
 
 class WidgetTemplate {
@@ -6,9 +7,11 @@ class WidgetTemplate {
 import 'package:flutter/material.dart';
 
 class @Name extends StatelessWidget {
+  const @Name({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Text('Hello');
+    return const Text('@Name Widget');
   }
 }
   ''';
@@ -17,6 +20,8 @@ class @Name extends StatelessWidget {
 import 'package:flutter/material.dart';
 
 class @Name extends StatefulWidget {
+  const @Name({Key? key}) : super(key: key);
+
   @override
   _@NameState createState() => _@NameState();
 }
@@ -24,7 +29,7 @@ class @Name extends StatefulWidget {
 class _@NameState extends State<@Name> {
   @override
   Widget build(BuildContext context) {
-    return Text("Hello");
+    return const Text("@Name Widget");
   }
 }
   ''';
@@ -52,8 +57,12 @@ export '@name.dart';
   }
 
   void createDir(String name, {bool stateful = false}) {
+    // extract root path from name
+    var namePath = CommonUtils.extractNamePath(name);
+    name = namePath.name;
+    
     // set current dir path
-    var path = Directory.current.path;
+    var path = namePath.path;
 
     // create root dir
     var widgetDirPath = path + '/widgets';

@@ -1,6 +1,6 @@
 name: flutter_generator
 description: Advanced dart/flutter dev tool for generating page, widget, model, repository, and bloc etc.
-version: 1.0.3
+version: 1.0.5
 homepage: https://github.com/pravinkumarputta/flutter_generator
 
 executables:
